@@ -4,7 +4,7 @@ from PIL import Image, ImageTk
 from functools import partial
 import locale
 from datetime import datetime
-#from notify_run import Notify
+# from notify_run import Notify
 import random
 import webbrowser
 from tkinter import messagebox
@@ -15,7 +15,7 @@ class TheGanges:
         self.mydb = mysql.connector.connect(
             host = 'localhost',
             user = 'root',
-            passwd = # enter password of mysql,
+            passwd = "",  # enter password of mysql,
             database = 'the_ganges'
         )
 
@@ -203,7 +203,7 @@ class TheGanges:
 
     def resend_otp(self):
         self.otp = random.randint(10000, 99999)
-        self.notify.send('Your OTP is ' + str(self.otp))
+        # self.notify.send('Your OTP is ' + str(self.otp))
 
     def view_profile(self):
         self.view_profile_scr = Toplevel(self.account_detail_scr)
@@ -223,7 +223,7 @@ class TheGanges:
 
             self.otp = random.randint(10000, 99999)
 
-            self.notify.send('your OTP is ' + str(self.otp))
+            # self.notify.send('your OTP is ' + str(self.otp))
 
             enter_otp_label = Label(self.get_otp_frame, text = "Enter OTP:", font = (None, 20))
             enter_otp_label.place(x = 0, y = 20)
@@ -1067,7 +1067,7 @@ class TheGanges:
 
         order_placed_label = Label(order_placed_scr, text = "Your order will be arriving soon",
                                    font = (None, 40))
-        self.notify.send(str(total))
+        # self.notify.send(str(total))
         order_placed_label.place(x = 200, y = 300)
         if disc:
             self.points -= 200
@@ -1132,19 +1132,19 @@ class TheGanges:
             self.bank_name = self.radio_var.get()
             if self.bank_name == "hdfc":
                 webbrowser.open("https://netbanking.hdfcbank.com/netbanking/")
-                self.notify.send("Your HDFC account was debited with ₹" + self.subtotal_str)
+                # self.notify.send("Your HDFC account was debited with ₹" + self.subtotal_str)
                 self.order_place()
             elif self.bank_name == "icici":
                 webbrowser.open("https://www.icicibank.com/Personal-Banking/insta-banking/internet-banking/index.page")
-                self.notify.send("Your ICICI account was debited with ₹" + self.subtotal_str)
+                # self.notify.send("Your ICICI account was debited with ₹" + self.subtotal_str)
                 self.order_place()
             elif self.bank_name == "axis":
                 webbrowser.open("https://www.axisbank.com/bank-smart/internet-banking/getting-started")
-                self.notify.send("Your Axis account was debited with ₹" + self.subtotal_str)
+                # self.notify.send("Your Axis account was debited with ₹" + self.subtotal_str)
                 self.order_place()
             elif self.bank_name == "kotak":
                 webbrowser.open("https://www.kotak.com/en/digital-banking/ways-to-bank/net-banking.html")
-                self.notify.send("Your Kotak Mahindra account was debited with ₹" + self.subtotal_str)
+                # self.notify.send("Your Kotak Mahindra account was debited with ₹" + self.subtotal_str)
                 self.order_place()
             elif len(self.bank_name) == 0:
                 messagebox.showerror('error', 'select a bank name')
